@@ -1,1 +1,1 @@
-# crd-controller
+# Go CRD controller
