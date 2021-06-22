@@ -4,5 +4,5 @@ metadata:
   name: ydata-sample
 spec:
   # Add fields here
-  param1: 1
-  param2: 2
+  param1: 10
+  param2: 5

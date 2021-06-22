@@ -19,10 +19,12 @@ package controllers
 import (
 	"context"
 
+	"log"
+
+	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
-	"sigs.k8s.io/controller-runtime/pkg/log"
 
 	ydatav1 "ydata/api/v1"
 )
@@ -47,9 +49,20 @@ type YdataReconciler struct {
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.8.3/pkg/reconcile
 func (r *YdataReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
-	_ = log.FromContext(ctx)
+	instance := &ydatav1.Ydata{}
 
-	// your logic here
+	err := r.Get(context.TODO(), req.NamespacedName, instance)
+	if err != nil {
+		if errors.IsNotFound(err) {
+			return ctrl.Result{}, nil
+		}
+
+		return ctrl.Result{}, err
+	}
+
+	result := instance.Spec.Param1 + instance.Spec.Param2
+
+	log.Println("Operation result for", req.Name, "-", result)
 
 	return ctrl.Result{}, nil
 }
