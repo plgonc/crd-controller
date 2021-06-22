@@ -1,0 +1,7 @@
+apiVersion: ydata.exercise-plgonc.com/v1
+kind: Ydata
+metadata:
+  name: ydata-sample
+spec:
+  # Add fields here
+  foo: bar

@@ -1,0 +1,24 @@
+# permissions for end users to edit ydata.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ydata-editor-role
+rules:
+- apiGroups:
+  - ydata.exercise-plgonc.com
+  resources:
+  - ydata
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ydata.exercise-plgonc.com
+  resources:
+  - ydata/status
+  verbs:
+  - get

@@ -1,0 +1,16 @@
+domain: exercise-plgonc.com
+layout:
+- go.kubebuilder.io/v3
+projectName: ydata-go-controller
+repo: ydata
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: exercise-plgonc.com
+  group: ydata
+  kind: Ydata
+  path: ydata/api/v1
+  version: v1
+version: "3"

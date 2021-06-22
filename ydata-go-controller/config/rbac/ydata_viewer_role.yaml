@@ -1,0 +1,20 @@
+# permissions for end users to view ydata.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ydata-viewer-role
+rules:
+- apiGroups:
+  - ydata.exercise-plgonc.com
+  resources:
+  - ydata
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ydata.exercise-plgonc.com
+  resources:
+  - ydata/status
+  verbs:
+  - get
